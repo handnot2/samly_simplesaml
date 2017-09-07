@@ -1,0 +1,37 @@
+---
+idp_host:               samly.idp
+idp_port:               8082
+baseurlpath:            http://samly.idp:8082/simplesaml/
+secretsalt:             changeme_to_a_long_random_salt
+auth_adminpassword:     changeme
+admin_protectindexpage: True
+admin_protectmetadata:  False
+technicalcontact_name:  Jane Doe
+technicalcontact_email: jane.doe@company.com
+timezone:               America/New_York
+enable_saml20_idp:      True
+debug:                  True
+showerrors:             False
+loggin_level:           DEBUG
+logging_handler:        file
+loggingdir:             /tmp/
+debug_validatexml:      True
+
+service_providers:
+  - base_url: http://samly.howto:4003/sso
+    name: samly_howto
+    certificate: sp/samly_howto/sp.crt
+
+authsources:
+  - name: example-userpass
+
+users:
+  - uid: fred
+    email: fred@stone.age
+    password: changeme
+  - uid: wilma
+    email: wilma@stone.age
+    password: changeme
+  - uid: dino
+    email: dino@stone.age
+    password: changeme

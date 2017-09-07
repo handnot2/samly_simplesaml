@@ -1,0 +1,58 @@
+---
+entity_id:      entity
+secretsalt:     salt
+authsources:    []
+user:           []
+metadata:       []
+
+# Config
+baseurlpath:             http://localhost:8080/simplesaml/
+certdir:                 cert/
+loggingdir:              log/
+datadir:                 data/
+tempdir:                 /tmp/simplesaml
+debug:                   False
+showerrors:              False
+errorreporting:          False
+debug_validatexml:       False
+auth_adminpassword:      changeme
+admin_protectindexpage:  True
+admin_protectmetadata:   True
+secretsalt:              salt
+technicalcontact_name:   John Doe
+technicalcontact_email:  john.doe@company.com
+timezone:                America/New_York
+loggin_level:            NOTICE
+logging_handler:         syslog
+enable_saml20_idp:       False
+enable_shib13_idp:       False
+enable_adfs_idp:         False
+enable_wsfed_sp:         False
+enable_authmemcookie:    False
+
+# Session
+session_durration:               28800
+session_datastore_timeout:       14400
+session_state_timeout:           3600
+cookie_name:                     SamlySimpleSAMLSessionID
+session_cookie_lifetime:         0
+session_cookie_domain:           null
+session_cookie_secure:           False
+session_disable_fallback:        False
+enable_http_post:                False
+session_phpsession_cookiename:   null
+session_phpsession_savepath:     null
+session_phpsession_httponly:     True
+session_authtoken_cookiename:    SamlySimpleSAMLAuthToken
+session_rememberme_enable:       False
+session_rememberme_checked:      False
+session_rememberme_lifetime:     1209600
+
+# Language
+language_default:                en
+language_parameter_name:         language
+language_parameter_setcookie:    True
+language_cookie_name:            language
+language_cookie_domain:          null
+language_cookie_path:            /
+language_cookie_lifetime:        77760000

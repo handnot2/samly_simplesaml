@@ -1,0 +1,4 @@
+authsources.php.tpl
+config.php.tpl
+saml20-idp-hosted.php.tpl
+saml20-sp-remote.php.tpl

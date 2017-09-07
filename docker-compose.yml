@@ -1,0 +1,31 @@
+version: '2.1'
+
+services:
+  setup:
+    image: samlysaml
+    volumes:
+      - ./setup:/setup
+      - ./sspdv:/sspdv
+    command: /setup/init.sh
+
+  idp:
+    image: php:fpm-alpine
+    depends_on:
+      - setup
+    volumes_from:
+      - setup
+    expose:
+      - 9000
+
+  web:
+    image: nginx:alpine
+    depends_on:
+      - idp
+    ports:
+      - "8082:8082" # keep this consistent with setup/params/params.yml
+    volumes_from:
+      - setup
+    volumes:
+      - ./sspdv/nginx/conf.d/site.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - idp
