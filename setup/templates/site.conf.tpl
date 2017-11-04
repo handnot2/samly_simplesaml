@@ -13,6 +13,7 @@ server {
 
   location / {
     try_files $uri $uri/ =404;
+    proxy_pass http://localhost:8080;
   }
 
   location ^~ /simplesaml {

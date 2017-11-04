@@ -13,7 +13,10 @@ $config = array(
     {{ range $user := .users }}
       '{{ $user.uid }}:{{ $user.password }}' => array(
         'uid' => array('{{ $user.uid }}'),
-        'email' => array('{{ $user.email }}')
+        'email' => array('{{ $user.email }}'),
+        'first_name' => array('{{ $user.first_name }}'),
+        'last_name' => array('{{ $user.last_name }}'),
+        'role' => array('{{ $user.role }}'),
       ),
     {{ end }}
   ),

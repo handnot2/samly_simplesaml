@@ -1,9 +1,13 @@
 # SimpleSAMLPhp development setup for working with Samly Elixir Library
 
-This repo is based on `https://github.com/hcpss-banderson/docker-simplesamlphp`
+This is based on `https://github.com/hcpss-banderson/docker-simplesamlphp`
 repo. It has been modified to setup SimpleSAMLPhp as an IDP using the
 `example-userpass` authentication module. Template for registering a SAML
-service provider is also included.
+service provider is also included (`setup/templates/saml20-sp-remote.php.tpl`).
+
+> This is setup to be an Identity Provider (IdP) for a `samly` demo Phoenix
+> application ([`samly_howto`](https://github.com/handnot2/samly_howto)).
+> But the usage is not limited to `samly_howto`.
 
 ## Building Docker Image
 
@@ -24,7 +28,13 @@ value.
 Edit the `users` section with the test users you need. At the least change
 the passwords.
 
-> Add the `idp_host` to your local `/etc/hosts` file.
+> Add the following to your `/etc/hosts` file:
+> ```
+> 127.0.0.1 samly.idp
+> 127.0.0.1 samly.howto
+> 127.0.0.1 idp2.samly.howto
+> 127.0.0.1 idp3.samly.howto
+> ```
 
 ## Register the SAML Service Provider
 
@@ -35,7 +45,11 @@ needs to interact with the SimpleSAMLPhp IDP provider you are going to create.
 The `base_url` should point to the `sso` route in your Elixir Plug/Phoenix
 application. Set `name` to the name of your application. Follow the instructions
 in [`Samly`](https://github.com/handnot2/samly) to create openssl certificate
-and copy that file as `sp/myapp/sp.crt` under `setup` directory.
+and copy that file as `sp/samly_howto/sp.crt` under `setup` directory.
+
+> When using the setup for applications other than `samly_howto`, use
+> `sp/<your-app-name>/sp.crt`. Make sure to change the references in
+> `setup/params/params.yml`.
 
 The compose setup process will use these parameters and the templates under
 `setup/templates` to properly setup a SAML IdP.

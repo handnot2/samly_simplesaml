@@ -19,19 +19,49 @@ debug_validatexml:      True
 
 service_providers:
   - base_url: http://samly.howto:4003/sso
-    name: samly_howto
+    entity_id: urn:samly.howto:sp1
+    idp_id: idp1
+    name: Samly Howto Service Provider 1
     certificate: sp/samly_howto/sp.crt
+    acs: /sp/consume/idp1
+    slo: /sp/logout/idp1
+    slo_response: /sp/logout/idp1
+  - base_url: http://idp2.samly.howto:4003/sso
+    entity_id: urn:idp2.samly.howto:sp2
+    idp_id: idp2
+    name: Samly Howto Service Provider 2
+    certificate: sp/samly_howto/sp.crt
+    acs: /sp/consume
+    slo: /sp/logout
+    slo_response: /sp/logout
+  - base_url: http://idp3.samly.howto:4003/sso
+    entity_id: urn:idp3.samly.howto:sp3
+    idp_id: idp3
+    name: Samly Howto Service Provider 3
+    certificate: sp/samly_howto/sp.crt
+    acs: /sp/consume
+    slo: /sp/logout
+    slo_response: /sp/logout
 
 authsources:
   - name: example-userpass
 
 users:
   - uid: fred
+    first_name: Fred
+    last_name: Stone
+    role: skipper
     email: fred@stone.age
     password: changeme
   - uid: wilma
+    first_name: Wilma
+    last_name: Stone
+    role: admin
     email: wilma@stone.age
     password: changeme
   - uid: dino
+    first_name: Dino
+    last_name: Stone
+    role: worker
     email: dino@stone.age
     password: changeme
