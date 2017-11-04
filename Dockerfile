@@ -1,6 +1,6 @@
 FROM php:fpm-alpine
 
-ENV SAML_VERSION 1.14.16
+ENV SAML_VERSION 1.14.17
 
 RUN set -xe \
   && apk add --no-cache openssl \
