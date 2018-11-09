@@ -2,6 +2,9 @@
 idp_host:               samly.idp
 idp_port:               8082
 baseurlpath:            http://samly.idp:8082/simplesaml/
+certdir:                cert/
+datadir:                data/
+tempdir:                /tmp/simplesaml
 secretsalt:             changeme_to_a_long_random_salt
 auth_adminpassword:     changeme
 admin_protectindexpage: True
@@ -10,12 +13,44 @@ technicalcontact_name:  Jane Doe
 technicalcontact_email: jane.doe@company.com
 timezone:               America/New_York
 enable_saml20_idp:      True
+enable_shib13_idp:      False
+enable_adfs_idp:        False
+enable_wsfed_sp:        False
+enable_authmemcookie:   False
 debug:                  True
 showerrors:             False
+errorreporting:         False
 loggin_level:           DEBUG
 logging_handler:        file
 loggingdir:             /tmp/
 debug_validatexml:      True
+
+# Session
+session_durration:               28800
+session_datastore_timeout:       14400
+session_state_timeout:           3600
+cookie_name:                     SamlySimpleSAMLSessionID
+session_cookie_lifetime:         0
+session_cookie_domain:           null
+session_cookie_secure:           False
+session_disable_fallback:        False
+enable_http_post:                False
+session_phpsession_cookiename:   null
+session_phpsession_savepath:     null
+session_phpsession_httponly:     True
+session_authtoken_cookiename:    SamlySimpleSAMLAuthToken
+session_rememberme_enable:       False
+session_rememberme_checked:      False
+session_rememberme_lifetime:     1209600
+
+# Language
+language_default:                en
+language_parameter_name:         language
+language_parameter_setcookie:    True
+language_cookie_name:            language
+language_cookie_domain:          null
+language_cookie_path:            /
+language_cookie_lifetime:        77760000
 
 service_providers:
   - base_url: http://samly.howto:4003/sso

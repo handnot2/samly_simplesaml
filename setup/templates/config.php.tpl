@@ -362,7 +362,7 @@ $config = array(
     /*
      * Options to override the default settings for the language parameter
      */
-    'language.parameter.name' => '{{ .simplesaml_language_parameter_name }}',
+    'language.parameter.name' => '{{ .language_parameter_name }}',
     'language.parameter.setcookie' => {{ .language_parameter_setcookie | yesno "true" "false" }},
 
     /*

@@ -5,6 +5,10 @@ authsources:    []
 user:           []
 metadata:       []
 
+# Nginx
+idp_host:                localhost
+idp_port:                8082
+
 # Config
 baseurlpath:             http://localhost:8080/simplesaml/
 certdir:                 cert/
