@@ -1,4 +1,4 @@
-FROM php:fpm-alpine
+FROM php:7.1-fpm-alpine3.8
 
 ENV SAML_VERSION 1.16.2
 
