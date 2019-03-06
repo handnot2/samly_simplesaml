@@ -16,7 +16,9 @@ $config = array(
         'email' => array('{{ $user.email }}'),
         'first_name' => array('{{ $user.first_name }}'),
         'last_name' => array('{{ $user.last_name }}'),
-        'role' => array('{{ $user.role }}'),
+        'role' => array(
+          {{ range $role := $user.roles }} '{{ $role }}', {{ end }}
+        ),
       ),
     {{ end }}
   ),
