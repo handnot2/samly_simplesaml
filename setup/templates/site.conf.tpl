@@ -1,7 +1,11 @@
 server {
-  listen {{ .idp_port }} default_server;
-  listen [::]:{{ .idp_port }} default_server ipv6only=on;
+  listen {{ .idp_port }} ssl;
+  listen [::]:{{ .idp_port }} ssl ipv6only=on;
   server_name {{ .idp_host }};
+  ssl_certificate /etc/nginx/cert/server.crt;
+  ssl_certificate_key /etc/nginx/cert/server.pem;
+  ssl_protocols TLSv1.1 TLSv1.2;
+  ssl_ciphers HIGH:!aNULL:!MD5;
   add_header X-Frame-Options "SAMEORIGIN";
   add_header X-Content-Type-Options "nosniff";
   add_header X-XSS-Protection "1; mode=block";
