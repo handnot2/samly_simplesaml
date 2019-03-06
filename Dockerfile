@@ -1,11 +1,11 @@
 FROM php:7.1-fpm-alpine3.8
 
-ENV SAML_VERSION 1.16.2
+ENV SAML_VERSION 1.16.3
 
 RUN set -xe \
   && apk add --no-cache openssl \
-  && apk add --no-cache php5-mcrypt \
-  && apk add --no-cache php5-ldap \
+  && apk add --no-cache php7-mcrypt \
+  && apk add --no-cache php7-ldap \
 	&& buildDeps="wget ca-certificates" \
 	&& apk add --no-cache $buildDeps \
 	&& update-ca-certificates \
