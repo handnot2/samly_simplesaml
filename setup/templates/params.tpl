@@ -1,12 +1,12 @@
 ---
-idp_host:               samly.idp
-idp_port:               8082
-baseurlpath:            http://samly.idp:8082/simplesaml/
+idp_host:               {{ .idp_host }}
+idp_port:               {{ .idp_port }}
+baseurlpath:            https://{{ .idp_host}}:{{ .idp_port }}/simplesaml/
 certdir:                cert/
 datadir:                data/
 tempdir:                /tmp/simplesaml
-secretsalt:             changeme_to_a_long_random_salt
-auth_adminpassword:     changeme
+secretsalt:             {{ .secret_salt }}
+auth_adminpassword:     {{ .pswd }}
 admin_protectindexpage: True
 admin_protectmetadata:  False
 technicalcontact_name:  Jane Doe
@@ -29,7 +29,7 @@ debug_validatexml:      True
 session_durration:               28800
 session_datastore_timeout:       14400
 session_state_timeout:           3600
-cookie_name:                     SamlySimpleSAMLSessionID
+cookie_name:                     SamlySimpleSAMLSessionID_{{ .idp_id }}
 session_cookie_lifetime:         0
 session_cookie_domain:           null
 session_cookie_secure:           False
@@ -38,7 +38,7 @@ enable_http_post:                False
 session_phpsession_cookiename:   null
 session_phpsession_savepath:     null
 session_phpsession_httponly:     True
-session_authtoken_cookiename:    SamlySimpleSAMLAuthToken
+session_authtoken_cookiename:    SamlySimpleSAMLAuthToken_{{ .idp_id }}
 session_rememberme_enable:       False
 session_rememberme_checked:      False
 session_rememberme_lifetime:     1209600
@@ -53,30 +53,14 @@ language_cookie_path:            /
 language_cookie_lifetime:        77760000
 
 service_providers:
-  - base_url: http://samly.howto:4003/sso
-    entity_id: urn:samly.howto:sp1
-    idp_id: idp1
-    name: Samly Howto Service Provider 1
-    certificate: sp/samly_howto/sp.crt
-    acs: /sp/consume/idp1
-    slo: /sp/logout/idp1
-    slo_response: /sp/logout/idp1
-  - base_url: http://idp2.samly.howto:4003/sso
-    entity_id: urn:idp2.samly.howto:sp2
-    idp_id: idp2
-    name: Samly Howto Service Provider 2
-    certificate: sp/samly_howto/sp.crt
-    acs: /sp/consume
-    slo: /sp/logout
-    slo_response: /sp/logout
-  - base_url: http://idp3.samly.howto:4003/sso
-    entity_id: urn:idp3.samly.howto:sp3
-    idp_id: idp3
-    name: Samly Howto Service Provider 3
-    certificate: sp/samly_howto/sp.crt
-    acs: /sp/consume
-    slo: /sp/logout
-    slo_response: /sp/logout
+  - base_url: {{ .sp_baseurl }}
+    entity_id: {{ .sp_entity_id }}
+    idp_id: {{ .idp_id }}
+    name: Samly Service Provider 1
+    certificate: {{ .sp_cert_file }}
+    acs: {{ .sp_acs_uri }}
+    slo: {{ .sp_slo_uri }}
+    slo_response: {{ .sp_slo_uri }}
 
 authsources:
   - name: example-userpass
@@ -85,18 +69,23 @@ users:
   - uid: fred
     first_name: Fred
     last_name: Stone
-    role: skipper
+    roles:
+      - skipper
     email: fred@stone.age
-    password: changeme
+    password: {{ .pswd }}
   - uid: wilma
     first_name: Wilma
     last_name: Stone
-    role: admin
+    roles:
+      - admin
     email: wilma@stone.age
-    password: changeme
+    password: {{ .pswd }}
   - uid: dino
     first_name: Dino
     last_name: Stone
-    role: worker
+    roles:
+      - worker
+      - joker
+      - docker
     email: dino@stone.age
-    password: changeme
+    password: {{ .pswd }}
