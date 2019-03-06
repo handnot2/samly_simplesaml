@@ -46,6 +46,7 @@ echo "sp_acs_uri: ${SP_ACS_URI}"                        >> ${GEN_DIR}/${IDP_ID}_
 echo "sp_slo_uri: ${SP_SLO_URI}"                        >> ${GEN_DIR}/${IDP_ID}_starter.yml
 echo "sp_entity_id: ${SP_ENTITY_ID}"                    >> ${GEN_DIR}/${IDP_ID}_starter.yml
 echo "sp_cert_file: ${SSP_DIR}/cert/sp/${SP_CERT_FILE}" >> ${GEN_DIR}/${IDP_ID}_starter.yml
+echo "timezone: ${TIMEZONE}"                            >> ${GEN_DIR}/${IDP_ID}_starter.yml
 
 twit ${SRC_DIR}/templates/params.tpl ${GEN_DIR}/${IDP_ID}_params.yml \
   -p ${GEN_DIR}/${IDP_ID}_starter.yml -n

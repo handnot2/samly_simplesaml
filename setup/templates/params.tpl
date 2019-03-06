@@ -11,7 +11,7 @@ admin_protectindexpage: True
 admin_protectmetadata:  False
 technicalcontact_name:  Jane Doe
 technicalcontact_email: jane.doe@company.com
-timezone:               America/New_York
+timezone:               {{ .timezone }}
 enable_saml20_idp:      True
 enable_shib13_idp:      False
 enable_adfs_idp:        False
