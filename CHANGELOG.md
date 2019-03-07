@@ -1,5 +1,14 @@
 # Changelog
 
+v0.4
+
+* Switch to SimpleSAMLphp version 1.16.3
+* Enable HTTPS
+* Use specific version of Docker php base image (issue #3)
+* Enable assertion encryption
+* Support multi-valued roles for users in authsource
+* Support multiple IdPs (check README.md)
+
 v0.3
 
 * Switch to SimpleSAMLphp version 1.16.2
