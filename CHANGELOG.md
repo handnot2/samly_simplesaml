@@ -1,5 +1,9 @@
 # Changelog
 
+v0.5
+
+* `README.md` updates
+
 v0.4
 
 * Switch to SimpleSAMLphp version 1.16.3
